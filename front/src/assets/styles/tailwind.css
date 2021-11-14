@@ -1240,6 +1240,11 @@ select {
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
 }
 
+.bg-teal-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 137, 123, var(--tw-bg-opacity));
+}
+
 .active\:bg-indigo-600:active {
   --tw-bg-opacity: 1;
   background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
