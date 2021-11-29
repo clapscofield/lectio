@@ -1,26 +1,238 @@
 import React from "react";
+import { useEffect, useRef, useState } from "react";
+import { criacao, scraping, textoUm, integracao, extracao, preprocessamento, conteudo} from "../Docstexts";
 
+export default function Docs() {
+  const useHeadingsData = () => {
+    const [nestedHeadings, setNestedHeadings] = React.useState([]);
 
-export default function Maps() {
+    React.useEffect(() => {
+      const headingElements = Array.from(document.querySelectorAll("h2, h3"));
+
+      // Created a list of headings, with H3s nested
+      const newNestedHeadings = getNestedHeadings(headingElements);
+      setNestedHeadings(newNestedHeadings);
+      console.log(headingElements);
+    }, []);
+
+    return { nestedHeadings };
+  };
+
+  const getNestedHeadings = (headingElements) => {
+    const nestedHeadings = [];
+
+    headingElements.forEach((heading, index) => {
+      const { innerText: title, id } = heading;
+
+      if (heading.nodeName === "H2") {
+        nestedHeadings.push({ id, title, items: [] });
+      } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
+        nestedHeadings[nestedHeadings.length - 1].items.push({
+          id,
+          title
+        });
+      }
+    });
+
+    return nestedHeadings;
+  };
+
+  const Headings = ({ headings, activeId }) => (
+    <ul>
+      {headings.map((heading) => (
+        <li
+          key={heading.id}
+          className={heading.id === activeId ? "active" : ""}
+        >
+          <a
+            href={`#${heading.id}`}
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector(`#${heading.id}`).scrollIntoView({
+                behavior: "smooth"
+              });
+            }}
+          >
+            {heading.title}
+          </a>
+          {heading.items.length > 0 && (
+            <ul>
+              {heading.items.map((child) => (
+                <li
+                  key={child.id}
+                  className={child.id === activeId ? "active" : ""}
+                >
+                  <a
+                    href={`#${child.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(`#${child.id}`).scrollIntoView({
+                        behavior: "smooth"
+                      });
+                    }}
+                  >
+                    {child.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+
+  const useIntersectionObserver = (setActiveId) => {
+    const headingElementsRef = useRef({});
+    useEffect(() => {
+      const callback = (headings) => {
+        headingElementsRef.current = headings.reduce((map, headingElement) => {
+          map[headingElement.target.id] = headingElement;
+          return map;
+        }, headingElementsRef.current);
+
+        const visibleHeadings = [];
+        Object.keys(headingElementsRef.current).forEach((key) => {
+          const headingElement = headingElementsRef.current[key];
+          if (headingElement.isIntersecting)
+            visibleHeadings.push(headingElement);
+        });
+
+        const getIndexFromId = (id) =>
+          headingElements.findIndex((heading) => heading.id === id);
+
+        if (visibleHeadings.length === 1) {
+          setActiveId(visibleHeadings[0].target.id);
+        } else if (visibleHeadings.length > 1) {
+          const sortedVisibleHeadings = visibleHeadings.sort(
+            (a, b) => getIndexFromId(a.target.id) > getIndexFromId(b.target.id)
+          );
+          setActiveId(sortedVisibleHeadings[0].target.id);
+        }
+      };
+
+      const observer = new IntersectionObserver(callback, {
+        rootMargin: "0px 0px -40% 0px"
+      });
+
+      const headingElements = Array.from(document.querySelectorAll("h2, h3"));
+
+      headingElements.forEach((element) => observer.observe(element));
+
+      return () => observer.disconnect();
+    }, [setActiveId]);
+  };
+
+  const [activeId, setActiveId] = useState();
+  const { nestedHeadings } = useHeadingsData();
+
+  useIntersectionObserver(setActiveId);
+
   return (
     <>
       <div className="flex flex-wrap">
         <div className="w-full px-4">
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-           <h1> Docs Lectio Dataset </h1>
-           <p>Texto de documentação detalhada do dataset
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus velit nec nulla tincidunt sodales. Pellentesque sit amet ipsum massa. In eget luctus nunc. Aenean ac lacus tincidunt, molestie nunc tincidunt, mattis risus. In a felis quis arcu convallis dictum. Aliquam suscipit sagittis neque sed rutrum. Donec massa libero, varius vel lacus vitae, maximus luctus turpis. Ut pretium metus vel euismod blandit. Suspendisse vulputate erat a rhoncus viverra. Nulla eget arcu dictum, dictum nibh maximus, tincidunt sapien. Fusce condimentum, neque mattis tincidunt luctus, nisi mauris luctus risus, non ornare mauris lacus ut magna. Vivamus euismod non felis eget rhoncus. Proin vestibulum, nibh ut finibus maximus, dolor libero lacinia nisi, at ultricies enim ligula sed nibh. Aenean vitae convallis felis, ac malesuada tellus. Nullam quis eleifend augue.
-
-Duis tellus purus, pellentesque vitae condimentum at, interdum sed nisl. Maecenas venenatis at erat a luctus. Duis a ultricies nisi. Maecenas mattis nulla id feugiat gravida. Nulla facilisi. Curabitur quis purus tincidunt, sollicitudin erat sit amet, tristique lacus. Morbi tincidunt malesuada lorem et elementum. Donec non ipsum sollicitudin, pharetra metus ac, placerat quam. Vestibulum suscipit nibh lobortis congue feugiat. Nam tellus nisi, porta eget enim ut, pellentesque fermentum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel velit ac neque iaculis pellentesque quis in metus. Donec euismod enim non est efficitur, et posuere purus facilisis.
-
-In euismod ac lectus in accumsan. Cras eget ex eu augue tincidunt consequat ut eu lacus. Vestibulum mi nulla, auctor ut est non, pretium tempus lacus. Fusce sollicitudin ante in risus maximus viverra. Vestibulum gravida magna eget nunc euismod, ac ultricies justo volutpat. Aliquam arcu mauris, ornare ut arcu vel, ultrices convallis ante. Fusce dictum dui eget enim luctus, eu accumsan quam tincidunt. Cras bibendum fringilla mi vitae dapibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam suscipit, ipsum at posuere congue, ipsum massa feugiat orci, id sagittis tellus velit quis erat. Proin venenatis bibendum pharetra.
-
-Mauris lobortis, risus ac mollis pellentesque, justo arcu aliquet odio, non feugiat risus augue et ante. Donec ac turpis bibendum, tristique turpis id, pharetra quam. Maecenas odio lacus, fringilla quis auctor nec, porttitor vitae dolor. Donec ac suscipit nunc, in convallis quam. Nullam ultrices erat sed rhoncus fermentum. Vivamus condimentum purus non sem semper, vitae tempor massa vulputate. Mauris et scelerisque quam. Pellentesque sed lectus tincidunt, iaculis sapien sit amet, auctor purus. Ut interdum faucibus lacinia. Pellentesque tristique urna ac felis egestas, ac dignissim turpis vulputate. Fusce feugiat posuere felis, ut volutpat ligula porttitor in. Quisque pharetra eget tortor in posuere. Nam vel dui elit. Curabitur porttitor dictum lorem. Vivamus volutpat ipsum sollicitudin lobortis sodales.
-
-Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus odio diam, vulputate eget pharetra a, cursus id nisl. Aliquam et orci facilisis, rutrum dui sit amet, tempor dolor. Sed quis imperdiet ex, vel molestie risus. Mauris facilisis mauris sed dictum commodo. Fusce sollicitudin sagittis erat ut auctor. Sed efficitur, odio sed dapibus malesuada, leo nunc faucibus quam, at molestie nisl quam vitae lectus. Suspendisse auctor vitae mauris id iaculis.
-
-            </p> 
-           </div>
+            <div className="flex flex-wrap w-full px-12 mr-auto ml-auto mt-6">
+              <h1 className="text-5xl mb-2 font-semibold leading-normal">
+                Documentação
+              </h1>
+              <div className="w-full lg:w-9/12 pr-5">
+                <h2
+                  className="text-3xl mb-2 font-semibold leading-normal"
+                  id="criacao"
+                >
+                  1. Processo de criação do dataset
+                </h2>
+                <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                  {criacao}
+                </p>
+                <h3
+                  className="text-2xl mb-2 font-semibold leading-normal"
+                  id="scraping"
+                >
+                  1.1 Web Scraping
+                </h3>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  {scraping}
+                </p>
+                <h3
+                  className="text-2xl mb-2 font-semibold leading-normal"
+                  id="integracao"
+                >
+                  1.2 Integração de dados
+                </h3>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  {integracao}
+                </p>
+                <h3
+                  className="text-2xl mb-2 font-semibold leading-normal"
+                  id="extracao"
+                >
+                  1.3 Extração de dados
+                </h3>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  {extracao}
+                </p>
+                <h3
+                  className="text-2xl mb-2 font-semibold leading-normal"
+                  id="preprocessamento"
+                >
+                  1.4 Pré-processamento de dados
+                </h3>
+                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
+                  {preprocessamento}
+                </p>
+              <h2
+                className="text-3xl mb-2 font-semibold leading-normal"
+                id="conteudo"
+              >
+                2. Conteúdo
+              </h2>
+              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                {conteudo}
+              </p>
+              <h2
+                className="text-3xl mb-2 font-semibold leading-normal"
+                id="analise"
+              >
+                3. Análise exploratória dos dados
+              </h2>
+              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                {textoUm}
+              </p>
+              <h2
+                className="text-3xl mb-2 font-semibold leading-normal"
+                id="uso"
+              >
+                4. Formato e uso
+              </h2>
+              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                {textoUm}
+              </p>
+              <h2
+                className="text-3xl mb-2 font-semibold leading-normal"
+                id="desafios"
+              >
+                5. Desafios e limitações
+              </h2>
+              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+                {textoUm}
+              </p>
+              </div>
+              <div className="w-full lg:w-3/12 ">
+              <div className="nav-menu" aria-label="Table of contents">
+                <p
+                  className="text-3xl mb-2 font-semibold leading-normal"
+                  id="lista"
+                >
+                  Conteúdos
+                </p>
+                  <Headings headings={nestedHeadings} activeId={activeId} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
