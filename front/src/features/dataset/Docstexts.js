@@ -69,3 +69,41 @@ export const conteudo =
    Além disso, para representar as relações entre tais elementos, criamos três tabelas de junção: WorksAuthors, WorksReviews e WorksGenres. \
    Full: Esta versão combina as duas primeiras versões e a tabela DigitalLibraryGoodreads, que armazena o resultado da integração de dados \
    , resultando em 12 tabelas."
+
+export const analise = 
+   "Desenvolvemos uma breve análise exploratória de dados para investigar o conjunto de dados do dataset com curadoria e aprimoramento e com foco de resumir\
+    suas principais características. Todos os detalhes de análise serão apresentados na seção correspondente com a visualização dos dados de diferentes formas."
+
+export const formatoUso =
+   "O dataset está publicamente disponível em um repositório Zenodo de acesso aberto, mas também pode ser baixado na seção de download.\
+   Como mencionado acima, todos os dados coletados e enriquecidos estão disponíveis em três partes separadas versões (Preliminar, Goodreads e Completa).\
+   Portanto, geramos um arquivo de despejo para cada versão que contém a estrutura e o conteúdo do banco de dados, que pode ser importado para qualquer \
+   servidor MySQL. Como o conjunto de dados está estruturado em formato tabular, também disponibilizamos as três versões no formato .csv, o que facilita\
+   o processamento em notebooks, por exemplo."
+
+export const desafios = 
+    "O dataset não está livre de desafios, que podem ser enfrentados em versões futuras.\
+    \
+    Nesta seção, discutimos brevemente os principais desafios e limitações, que estão principalmente relacionados à heterogeneidade das fontes de dados \
+    utilizadas no processo de coleta.\
+    \
+    Integração de dados:\
+    Ao juntar diferentes conjuntos de dados com base em entidades que podem (ou não) compartilhar um identificador comum, um método de vinculação de registros\
+     é frequentemente necessário, o que também foi feito aqui.\
+    Aplicamos uma abordagem de correspondência difusa, em que pares de registros com probabilidades acima de um certo limite foram considerados a mesma entidade.\
+    No entanto, embora a lógica difusa seja normalmente um método melhor do que a correspondência determinística, ela está sujeita a erros de ortografia e de\
+    formatação. Soluções possíveis: não há muito a fazer em relação a trabalhos que não estão realmente presentes no Goodreads, exceto mantê-los apenas no\
+     conjunto preliminar; e outra opção é pesquisar manualmente no site por aqueles mapeados incorretamente.\
+    \
+    Qualidade de dados:\
+    Além de ser o maior site do mundo para leitores e recomendações de livros, o Goodreads também é uma plataforma de mídia social. Portanto, como qualquer\
+     outra fonte de dados do mundo real, muito de seu conteúdo disponível é imputado por seus usuários, estando então sujeito à imprecisão e à falta de \
+     informações.\
+    Solução possível: para considerar uma fonte de dados adicional para tentar imputar o conteúdo incompleto.\
+    \
+    Gêneros distintos:\
+    Outro problema decorrente da integração de dados é a distinção de gênero entre as fontes de dados, onde apenas duas possuem gêneros literários: \
+    Projecto Adamastor e BLPL. No primeiro, o campo word_category compreende 54 gêneros; enquanto no último,\
+    o campo work_genre contém 354 gêneros. Ao comparar os dois conjuntos, eles compartilham apenas quatro gêneros literários Histórias, Biografia, Cartas e\
+    Memórias. \
+    Solução possível: para considerar abordagens de correspondência difusa para encontrar gêneros semelhantes."

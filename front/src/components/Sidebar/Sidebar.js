@@ -105,7 +105,48 @@ export default function Sidebar() {
                   Docs
                 </Link>
               </li>
-
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/dataset/download") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/dataset/download"
+                >
+                  <i
+                    className={
+                      "fas fa-download mr-2 text-sm " +
+                      (window.location.href.indexOf("/dataset/download") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Download
+                </Link>
+              </li>
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/dataset/table") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/dataset/table"
+                >
+                  <i
+                    className={
+                      "fas fa-table mr-2 text-sm " +
+                      (window.location.href.indexOf("/dataset/table") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Tabela 
+                </Link>
+              </li>
               <li className="items-center">
                 <Link
                   className={
@@ -127,29 +168,6 @@ export default function Sidebar() {
                   Settings
                 </Link>
               </li>
-
-              <li className="items-center">
-                <Link
-                  className={
-                    "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/tables") !== -1
-                      ? "text-primario-rosa hover:text-primario-rosa"
-                      : "text-blueGray-700 hover:text-blueGray-500")
-                  }
-                  to="/admin/tables"
-                >
-                  <i
-                    className={
-                      "fas fa-table mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/tables") !== -1
-                        ? "opacity-75"
-                        : "text-blueGray-300")
-                    }
-                  ></i>{" "}
-                  Tables
-                </Link>
-              </li>
-
               <li className="items-center">
                 <Link
                   className={

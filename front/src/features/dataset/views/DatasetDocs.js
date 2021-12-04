@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
-import { criacao, scraping, textoUm, integracao, extracao, preprocessamento, conteudo} from "../Docstexts";
+import { criacao, scraping, textoUm, integracao, extracao, preprocessamento, conteudo, analise, formatoUso, desafios} from "../Docstexts";
 
 export default function Docs() {
   const useHeadingsData = () => {
@@ -199,7 +199,7 @@ export default function Docs() {
                 3. Análise exploratória dos dados
               </h2>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {textoUm}
+                {analise}
               </p>
               <h2
                 className="text-3xl mb-2 font-semibold leading-normal"
@@ -208,7 +208,7 @@ export default function Docs() {
                 4. Formato e uso
               </h2>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {textoUm}
+                {formatoUso}
               </p>
               <h2
                 className="text-3xl mb-2 font-semibold leading-normal"
@@ -217,7 +217,7 @@ export default function Docs() {
                 5. Desafios e limitações
               </h2>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {textoUm}
+                {desafios}
               </p>
               </div>
               <div className="w-full lg:w-3/12 ">
