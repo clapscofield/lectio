@@ -22,34 +22,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
 import Icon from '@mui/material/Icon';
-
+import { getLineAndCharacterOfPosition } from "typescript";
 
 export default function DatasetTable() {
-  function createData(name, calories, fat, carbs, protein) {
-    return {
-      name,
-      calories,
-      fat,
-      carbs,
-      protein
-    };
-  }
-
-  const rows = [
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Donut", 452, 25.0, 51, 4.9),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-    createData("Honeycomb", 408, 3.2, 87, 6.5),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Jelly Bean", 375, 0.0, 94, 0.0),
-    createData("KitKat", 518, 26.0, 65, 7.0),
-    createData("Lollipop", 392, 0.2, 98, 0.0),
-    createData("Marshmallow", 318, 0, 81, 2.0),
-    createData("Nougat", 360, 19.0, 9, 37.0),
-    createData("Oreo", 437, 18.0, 63, 4.0)
-  ];
 
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -67,8 +42,7 @@ export default function DatasetTable() {
       : (a, b) => -descendingComparator(a, b, orderBy);
   }
 
-  // This method is created for cross-browser compatibility, if you don't
-  // need to support IE11, you can use Array.prototype.sort() directly
+
   function stableSort(array, comparator) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
@@ -95,28 +69,40 @@ export default function DatasetTable() {
       label: "Título"
     },
     {
+      id: "anoPublicacao",
+      numeric: false,
+      disablePadding: false,
+      label: "Ano de publicação"
+    },
+    {
       id: "isbn",
       numeric: true,
       disablePadding: false,
       label: "ISBN"
     },
     {
-      id: "isbn13",
+      id: "numeroReviews",
       numeric: true,
       disablePadding: false,
-      label: "ISBN13"
+      label: "Número de reviews"
     },
     {
-      id: "asin",
+      id: "formato",
       numeric: true,
       disablePadding: false,
-      label: "ASIN"
+      label: "FORMATO"
     },
     {
-      id: "image",
+      id: "numpaginas",
       numeric: false,
       disablePadding: false,
-      label: "URL IMAGEM"
+      label: "Número de páginas"
+    },
+    {
+      id: "editora",
+      numeric: false,
+      disablePadding: false,
+      label: "Editora"
     }
   ];
 
@@ -169,14 +155,14 @@ export default function DatasetTable() {
   };
 
   const EnhancedTableToolbar = (props) => {
-    const { numSelected } = props;
+    //const { numSelected } = props;
 
     return (
       <Toolbar
         sx={{
           pl: { sm: 2 },
           pr: { xs: 1, sm: 1 },
-          ...(numSelected > 0 && {
+          ...({
             bgcolor: (theme) =>
               alpha(
                 theme.palette.primary.main,
@@ -191,7 +177,7 @@ export default function DatasetTable() {
             id="tableTitle"
             component="div"
           >
-            Goodreads Works
+            Goodreads Works csv
           </Typography>
         
 
@@ -214,7 +200,31 @@ export default function DatasetTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [dados, setDados] = useState([]);
+  const [rows, setRows] = useState([]);
+  const dados = []
+
+  function readCsv(){
+    const linhaTemp = []
+    const papaConfig = {
+      delimiter: "\t",
+      header: "true",
+      complete: (results, file) => {
+        //setDados(results.data);
+        dados.push(results.data);
+        dados[0].forEach(item => {
+          linhaTemp.push(item);
+        })
+        setRows(linhaTemp)
+        console.log("linhas: ", rows);
+      },
+      download: true,
+      error: (error, file) => {
+        console.log("Error while parsing:", error, file);
+      }
+    };
+  
+    readString(goodreadsWorks, papaConfig);
+  }
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -260,20 +270,8 @@ export default function DatasetTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const papaConfig = {
-    delimiter: "\t",
-    header: "true",
-    complete: (results, file) => {
-      setDados(results.data);
-      console.log("Dados: ", dados);
-    },
-    download: true,
-    error: (error, file) => {
-      console.log("Error while parsing:", error, file);
-    }
-  };
   
-  readString(goodreadsWorks, papaConfig);
+  readCsv();
 
   return (
     <>
@@ -311,11 +309,11 @@ export default function DatasetTable() {
                                   <TableRow
                                     hover
                                     onClick={(event) =>
-                                      handleClick(event, row.name)
+                                      handleClick(event, row.title)
                                     }
                                     role="checkbox"
                                     tabIndex={-1}
-                                    key={row.name}
+                                    key={row.title}
                                   >
                                     <TableCell
                                       component="th"
@@ -323,19 +321,28 @@ export default function DatasetTable() {
                                       scope="row"
                                       padding="none"
                                     >
-                                      {row.name}
+                                      {row.id}
                                     </TableCell>
                                     <TableCell align="right">
-                                      {row.calories}
+                                      {row.title}
                                     </TableCell>
                                     <TableCell align="right">
-                                      {row.fat}
+                                      {row.publication_year}
                                     </TableCell>
                                     <TableCell align="right">
-                                      {row.carbs}
+                                      {row.isbn}
                                     </TableCell>
                                     <TableCell align="right">
-                                      {row.protein}
+                                      {row.text_reviews_count}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                      {row.format}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                      {row.num_pages}
+                                    </TableCell>
+                                    <TableCell align="right">
+                                      {row.publisher}
                                     </TableCell>
                                   </TableRow>
                                 );

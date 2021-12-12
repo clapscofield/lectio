@@ -147,7 +147,7 @@ export default function Sidebar() {
                   Tabela 
                 </Link>
               </li>
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
@@ -167,8 +167,8 @@ export default function Sidebar() {
                   ></i>{" "}
                   Settings
                 </Link>
-              </li>
-              <li className="items-center">
+              </li> */}
+              {/* <li className="items-center">
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
@@ -188,9 +188,16 @@ export default function Sidebar() {
                   ></i>{" "}
                   Maps
                 </Link>
-              </li>
+              </li> */}
             </ul>
 
+
+               {/* Divider */}
+            <hr className="my-4 md:min-w-full" />
+            {/* Heading */}
+            <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+              PLN 
+            </h6>
            </div>
         </div>
       </nav>
