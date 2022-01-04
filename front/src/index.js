@@ -11,6 +11,7 @@ import Admin from "layouts/Admin.js";
 import Auth from "layouts/Auth.js";
 
 // views without layouts
+import Dataset from "features/dataset";
 
 import Landing from "features/landing";
 import Profile from "views/Profile.js";
@@ -21,6 +22,7 @@ ReactDOM.render(
     <Switch>
       {/* add routes with layouts */}
       <Route path="/admin" component={Admin} />
+      <Route path="/dataset" component={Dataset} />
       <Route path="/auth" component={Auth} />
       {/* add routes without layouts */}
       <Route path="/landing" exact component={Landing} />

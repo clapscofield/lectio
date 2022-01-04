@@ -1155,6 +1155,28 @@ select {
   background-color: rgba(20, 184, 166, var(--tw-bg-opacity));
 }
 
+.bg-primario1{
+  background-color: rgba(140, 161, 165, 1);
+}
+
+.bg-primario-rosa{
+  background-color: rgba(213, 191, 191, 1);
+}
+
+.bg-primario-rosa2{
+  background-color: rgba(200, 149, 149, 1);
+}
+
+.bg-primario-azul{
+  background-color: rgba(109, 130, 153, 1);
+}
+
+.bg-primario-azul2{
+  background-color: rgba(49, 107, 131, 1);
+}
+
+
+
 .bg-emerald-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
@@ -1238,6 +1260,11 @@ select {
 .bg-blueGray-800 {
   --tw-bg-opacity: 1;
   background-color: rgba(30, 41, 59, var(--tw-bg-opacity));
+}
+
+.bg-teal-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 137, 123, var(--tw-bg-opacity));
 }
 
 .active\:bg-indigo-600:active {
@@ -2069,6 +2096,10 @@ select {
   padding-right: 1rem;
 }
 
+.pr-5 {
+  padding-right: 1.25rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -2433,6 +2464,21 @@ select {
   --tw-text-opacity: 1;
   color: rgba(30, 41, 59, var(--tw-text-opacity));
 }
+
+.text-primario-rosa {
+  --tw-text-opacity: 1;
+  color: rgba(200, 149, 149, 1);
+}
+
+.hover\:text-primario-rosa:hover {
+  --tw-text-opacity: 1;
+  color: rgba(200, 149, 149, 1);
+}
+.hover\:text-black:hover {
+  --tw-text-opacity: 1;
+  color:black;
+}
+
 
 .hover\:text-lightBlue-600:hover {
   --tw-text-opacity: 1;
@@ -3037,4 +3083,38 @@ select {
 }
 
 @media (min-width: 1536px) {
+}
+
+
+/* Clarisse adicionou */
+
+.nav-menu {
+  position: sticky;
+  position: -webkit-sticky; /* For Safari */
+  top: 24px; /* How far down the page you want your ToC to live */
+
+  /* Give table of contents a scrollbar */
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+}
+
+@media screen and (max-width: 900px) {
+  nav-menu {
+    display: none;
+  }
+}
+
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+li.active > a {
+  color: rgba(200, 149, 149, 1);
+  font-weight: bold;
+}
+
+li > a:hover {
+  color: rgba(200, 149, 149, 1);
 }
