@@ -147,6 +147,27 @@ export default function Sidebar() {
                   Tabela 
                 </Link>
               </li>
+                <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/dataset/graph") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/dataset/graph"
+                >
+                  <i
+                    className={
+                      "fas fa-chart-bar mr-2 text-sm " +
+                      (window.location.href.indexOf("/dataset/graph") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Gráfico
+                </Link>
+              </li>
               {/* <li className="items-center">
                 <Link
                   className={
@@ -190,8 +211,6 @@ export default function Sidebar() {
                 </Link>
               </li> */}
             </ul>
-
-
                {/* Divider */}
             <hr className="my-4 md:min-w-full" />
             {/* Heading */}

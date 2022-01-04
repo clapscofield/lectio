@@ -17,6 +17,7 @@ import Tables from "views/admin/Tables.js";
 import DatasetDocs from "./DatasetDocs";
 import Download from "./DatasetDownload";
 import DatasetTable from "./DatasetTable";
+import DatasetGraph from "./DatasetGraph";
 
 export default function Dataset() {
   return (
@@ -31,6 +32,7 @@ export default function Dataset() {
             <Route path="/dataset/docs" exact component={DatasetDocs} />            
             <Route path="/dataset/download" exact component={Download} />
             <Route path="/dataset/table" exact component={DatasetTable} />
+            <Route path="/dataset/graph" exact component={DatasetGraph} />
             <Route path="/admin/maps" exact component={Maps} />
             <Route path="/admin/settings" exact component={Settings} />
             <Route path="/admin/tables" exact component={Tables} />
