@@ -217,6 +217,30 @@ export default function Sidebar() {
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
               PLN 
             </h6>
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+            <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/pln/sentiment") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/pln/sentiment"
+                >
+                  <i
+                    className={
+                      "fas fa-chart-bar mr-2 text-sm " +
+                      (window.location.href.indexOf("/pln/sentiment") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Análise de Sentimento
+                </Link>
+              </li>
+            </ul>
+            
            </div>
         </div>
       </nav>
