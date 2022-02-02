@@ -222,6 +222,27 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/pln/docs") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/pln/docs"
+                >
+                  <i
+                    className={
+                      "fas fa-align-justify mr-2 text-sm " +
+                      (window.location.href.indexOf("/pln/docs") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Docs
+                </Link>
+              </li>
+            <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
                     (window.location.href.indexOf("/pln/sentiment") !== -1
                       ? "text-primario-rosa hover:text-primario-rosa"
                       : "text-blueGray-700 hover:text-blueGray-500")
@@ -230,7 +251,7 @@ export default function Sidebar() {
                 >
                   <i
                     className={
-                      "fas fa-chart-bar mr-2 text-sm " +
+                      "fa fa-heart mr-2 text-sm " +
                       (window.location.href.indexOf("/pln/sentiment") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
