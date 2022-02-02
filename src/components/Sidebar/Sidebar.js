@@ -260,6 +260,48 @@ export default function Sidebar() {
                   Análise de Sentimento
                 </Link>
               </li>
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/pln/emocoes") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/pln/emocoes"
+                >
+                  <i
+                    className={
+                      "fa fa-book mr-2 text-sm " +
+                      (window.location.href.indexOf("/pln/emocoes") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Emoções nos livros
+                </Link>
+              </li>
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/pln/sucesso") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/pln/sucesso"
+                >
+                  <i
+                    className={
+                      "fas fa-arrow-up mr-2 text-sm " +
+                      (window.location.href.indexOf("/pln/sucesso") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Análise de sucesso
+                </Link>
+              </li>
             </ul>
             
            </div>
