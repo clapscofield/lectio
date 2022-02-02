@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
-import { criacao, scraping, textoUm, integracao, extracao, preprocessamento, conteudo, analise, formatoUso, desafios} from "../Docstexts";
+import { criacao, scraping, integracao, extracao, preprocessamento, conteudo, analise, formatoUso, desafios} from "../Docstexts";
 
-export default function Docs() {
+export default function PlnDocs() {
   const useHeadingsData = () => {
     const [nestedHeadings, setNestedHeadings] = React.useState([]);
 

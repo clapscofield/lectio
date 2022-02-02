@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Chart from "chart.js";
 import * as d3 from "d3";
-import valoresFaltantes from "../../../assets/img/valoresFaltantes.png";
-import corrPlot from "../../../assets/img/corrplot.png";
-import jidm from "../../../assets/img/jidm.png";
 import CardStats from "components/Cards/CardStats.js";
 
-export default function DatasetGraph() {
+export default function PlnSentiment() {
   function makeChart(genres) {
     var playerLabels = genres.map(function (d) {
       return d.Name;
