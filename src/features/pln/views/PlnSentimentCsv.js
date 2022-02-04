@@ -254,7 +254,7 @@ export default function PlnSentimentCsv() {
   function readCsv() {
     const linhaTemp = [];
     const papaConfig = {
-      delimiter: "\t",
+      delimiter: ";",
       header: "true",
       complete: (results, file) => {
         //setDados(results.data);
@@ -306,9 +306,6 @@ export default function PlnSentimentCsv() {
     setPage(0);
   };
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -321,7 +318,7 @@ export default function PlnSentimentCsv() {
         <Paper sx={{ width: "100%", mb: 2 }}>
           <EnhancedTableToolbar numSelected={selected.length} />
           <TableContainer>
-            <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={dense ? "small" : "medium"}>
+            <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle" size={"small"}>
               <EnhancedTableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
               <TableBody>
                 {stableSort(rows, getComparator(order, orderBy))
