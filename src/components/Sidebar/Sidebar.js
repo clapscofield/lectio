@@ -264,21 +264,21 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/pln/emocoes") !== -1
+                    (window.location.href.indexOf("/pln/metadados") !== -1
                       ? "text-primario-rosa hover:text-primario-rosa"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/pln/emocoes"
+                  to="/pln/metadados"
                 >
                   <i
                     className={
                       "fa fa-book mr-2 text-sm " +
-                      (window.location.href.indexOf("/pln/emocoes") !== -1
+                      (window.location.href.indexOf("/pln/metadados") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Emoções nos livros
+                  Dados por livro
                 </Link>
               </li>
               <li className="items-center">

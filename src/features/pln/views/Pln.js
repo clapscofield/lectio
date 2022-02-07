@@ -8,7 +8,7 @@ import PlnHeader from "./PlnHeader";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import PlnDocs from "./PlnDocs";
 import PlnSentiment from "./PlnSentiment";
-import PlnEmocoes from "./PlnEmocoes"
+import PlnMetadados from "./PlnMetadados"
 import PlnSucesso from "./PlnSucesso";
 import FooterPln from "./FooterPln";
 // views
@@ -30,7 +30,7 @@ export default function Dataset() {
           <Switch>
             <Route path="/pln/docs" exact component={PlnDocs} />
             <Route path="/pln/sentiment" exact component={PlnSentiment} />     
-            <Route path="/pln/emocoes" exact component={PlnEmocoes} />
+            <Route path="/pln/metadados" exact component={PlnMetadados} />
             <Route path="/pln/sucesso" exact component={PlnSucesso} />                    
             <Route path="/admin/maps" exact component={Maps} />
             <Route path="/admin/settings" exact component={Settings} />
