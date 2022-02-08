@@ -281,7 +281,7 @@ export default function Sidebar() {
                   Dados por livro
                 </Link>
               </li> */}
-              <li className="items-center">
+               <li className="items-center">
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
@@ -299,7 +299,28 @@ export default function Sidebar() {
                         : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Análise de sucesso
+                  Sucesso nos livros
+                </Link>
+              </li>
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block " +
+                    (window.location.href.indexOf("/pln/breve") !== -1
+                      ? "text-primario-rosa hover:text-primario-rosa"
+                      : "text-blueGray-700 hover:text-blueGray-500")
+                  }
+                  to="/pln/breve"
+                >
+                  <i
+                    className={
+                      "fas fa-spinner mr-2 text-sm " +
+                      (window.location.href.indexOf("/pln/breve") !== -1
+                        ? "opacity-75"
+                        : "text-blueGray-300")
+                    }
+                  ></i>{" "}
+                  Em breve...
                 </Link>
               </li>
             </ul>

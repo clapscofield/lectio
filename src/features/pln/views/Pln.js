@@ -10,6 +10,7 @@ import PlnDocs from "./PlnDocs";
 import PlnSentiment from "./PlnSentiment";
 import PlnMetadados from "./PlnMetadados"
 import PlnSucesso from "./PlnSucesso";
+import PlnBreve from "./PlnBreve";
 import FooterPln from "./FooterPln";
 // views
 
@@ -31,7 +32,8 @@ export default function Dataset() {
             <Route path="/pln/docs" exact component={PlnDocs} />
             <Route path="/pln/sentiment" exact component={PlnSentiment} />     
             <Route path="/pln/metadados" exact component={PlnMetadados} />
-            <Route path="/pln/sucesso" exact component={PlnSucesso} />                    
+            <Route path="/pln/sucesso" exact component={PlnSucesso} />   
+            <Route path="/pln/breve" exact component={PlnBreve} />                    
             <Route path="/admin/maps" exact component={Maps} />
             <Route path="/admin/settings" exact component={Settings} />
             <Route path="/admin/tables" exact component={Tables} />
