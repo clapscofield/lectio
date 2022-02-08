@@ -167,7 +167,7 @@ export default function PlnSentiment() {
                   <h3 className="mb-2 font-semibold leading-normal">
                     Resumo da análise de sentimentos em resenhas online, categorizadas por gênero e supergênero
                   </h3>
-                  <PlnSentimentCsv />
+                  {/* <PlnSentimentCsv /> */}
                 </div>
               </Box>
             </div>
