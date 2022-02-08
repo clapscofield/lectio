@@ -260,7 +260,7 @@ export default function Sidebar() {
                   Análise de Sentimento
                 </Link>
               </li>
-              <li className="items-center">
+              {/* <li className="items-center">
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
@@ -280,7 +280,7 @@ export default function Sidebar() {
                   ></i>{" "}
                   Dados por livro
                 </Link>
-              </li>
+              </li> */}
               <li className="items-center">
                 <Link
                   className={
