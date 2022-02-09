@@ -59,15 +59,15 @@ export default function Download() {
                 >
                   <a
                     href="https://zenodo.org/record/5178063/files/PPORTAL.zip?download=1"
+                    target="_blank"
                     className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:text-black text-white"
-                    onClick={(e) => e.preventDefault()}
                   >
                     ZIP (arquivos csv)
                   </a>
                   <a
                     href="https://zenodo.org/record/5178063/files/PPORTAL.dump.sql?download=1"
+                    target="_blank"
                     className="text-sm py-2 px-4 font-normal block w-full whitespace-no-wrap bg-transparent hover:text-black text-white"
-                    onClick={(e) => e.preventDefault()}
                   >
                     Dump SQL
                   </a>
