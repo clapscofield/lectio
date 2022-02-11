@@ -21,17 +21,15 @@ import Index from "views/Index.js";
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      {/* add routes with layouts */}
-      <Route path="/admin" component={Admin} />
       <Route path="/dataset" component={Dataset} />
       <Route path="/pln" component={Pln} />
-      <Route path="/auth" component={Auth} />
+      {/* <Route path="/auth" component={Auth} /> */}
       {/* add routes without layouts */}
-      <Route path="/landing" exact component={Landing} />
-      <Route path="/profile" exact component={Profile} />
-      <Route path="/" exact component={Index} />
+      {/* <Route path="/landing" exact component={Landing} />
+      <Route path="/profile" exact component={Profile} /> */}
+      <Route path="/" component={Dataset} />
       {/* add redirect for first page */}
-      <Redirect from="*" to="/" />
+      <Redirect from="*" to="/dataset/docs" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
