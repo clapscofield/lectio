@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Chart from "chart.js";
 import * as d3 from "d3";
-import CardStats from "components/Cards/CardStats.js";
 
 export default function PlnSucesso() {
   function makeChart(genres) {

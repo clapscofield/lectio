@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { readString } from "react-papaparse";
 import goodreadsSentiment from "../../../assets/csv/goodreads_reviews_sentiment.csv";
 import PropTypes from "prop-types";
@@ -17,11 +17,8 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
 import Icon from "@mui/material/Icon";
-import { getLineAndCharacterOfPosition } from "typescript";
 
 export default function PlnSentimentCsv() {
   function descendingComparator(a, b, orderBy) {
@@ -246,7 +243,6 @@ export default function PlnSentimentCsv() {
   const [orderBy, setOrderBy] = React.useState("titulo");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [rows, setRows] = useState([]);
   const dados = [];
@@ -360,11 +356,7 @@ export default function PlnSentimentCsv() {
                     );
                   })}
                 {emptyRows > 0 && (
-                  <TableRow
-                    style={{
-                      height: (dense ? 33 : 53) * emptyRows
-                    }}
-                  >
+                  <TableRow>
                     <TableCell colSpan={6} />
                   </TableRow>
                 )}

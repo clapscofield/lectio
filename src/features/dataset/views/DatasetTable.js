@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { readString } from "react-papaparse";
 import goodreadsWorks from "../../../assets/csv/goodreads_works.csv";
 import goodreadsInfos from "../../../assets/csv/goodreads_books_infosnovo.csv";
@@ -356,28 +356,6 @@ export default function DatasetTable() {
     };
   
     readString(goodreadsWorks, papaConfig);
-  }
-
-  function readCsvInfo(){
-    const linhaTemp = []
-    const papaConfig = {
-      delimiter: "\t",
-      header: "true",
-      complete: (results, file) => {
-        //setDados(results.data);
-        dados.push(results.data);
-        dados[0].forEach(item => {
-          linhaTemp.push(item);
-        })
-        setRows(linhaTemp)
-        console.log("linhas: ", rows);
-      },
-      download: true,
-      error: (error, file) => {
-        console.log("Error while parsing:", error, file);
-      }
-    };
-  
     readString(goodreadsInfos, papaConfig);
   }
 

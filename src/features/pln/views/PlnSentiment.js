@@ -4,7 +4,6 @@ import Chart from "chart.js";
 import * as d3 from "d3";
 import CardStats from "components/Cards/CardStats.js";
 import sentimentos from "../../../assets/img/sentimentos.png";
-import PlnSentimentCsv from "./PlnSentimentCsv";
 
 export default function PlnSentiment() {
   function makeChart(genres) {
