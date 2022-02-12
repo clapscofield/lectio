@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
-import { criacao, scraping, integracao, extracao, preprocessamento, conteudo, analise, formatoUso, desafios} from "../Docstexts";
+import {definicao, analiseSentimentos, analiseSentimentosCont, predicaodesucesso} from "../Docstexts";
 
 export default function PlnDocs() {
   const useHeadingsData = () => {
@@ -142,82 +142,48 @@ export default function PlnDocs() {
                   className="text-3xl mb-2 font-semibold leading-normal"
                   id="criacao"
                 >
-                  1. Processo de criação do dataset
+                  1. Definição
                 </h2>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  {criacao}
-                </p>
-                <h3
-                  className="text-2xl mb-2 font-semibold leading-normal"
-                  id="scraping"
-                >
-                  1.1 Web Scraping
-                </h3>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  {scraping}
-                </p>
-                <h3
-                  className="text-2xl mb-2 font-semibold leading-normal"
-                  id="integracao"
-                >
-                  1.2 Integração de dados
-                </h3>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  {integracao}
-                </p>
-                <h3
-                  className="text-2xl mb-2 font-semibold leading-normal"
-                  id="extracao"
-                >
-                  1.3 Extração de dados
-                </h3>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  {extracao}
-                </p>
-                <h3
-                  className="text-2xl mb-2 font-semibold leading-normal"
-                  id="preprocessamento"
-                >
-                  1.4 Pré-processamento de dados
-                </h3>
-                <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  {preprocessamento}
+                  {definicao}
                 </p>
               <h2
                 className="text-3xl mb-2 font-semibold leading-normal"
                 id="conteudo"
               >
-                2. Conteúdo
+                2. Análise de sentimento
               </h2>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {conteudo}
+                {analiseSentimentos}
+                <br />
+                {analiseSentimentosCont}
               </p>
               <h2
                 className="text-3xl mb-2 font-semibold leading-normal"
                 id="analise"
               >
-                3. Análise exploratória dos dados
+                3. Predição de sucesso na literatura
               </h2>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {analise}
+                {predicaodesucesso}
               </p>
               <h2
                 className="text-3xl mb-2 font-semibold leading-normal"
                 id="uso"
               >
-                4. Formato e uso
+                4. Próximos passos
               </h2>
               <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {formatoUso}
-              </p>
-              <h2
-                className="text-3xl mb-2 font-semibold leading-normal"
-                id="desafios"
-              >
-                5. Desafios e limitações
-              </h2>
-              <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                {desafios}
+                Próximas análises e features da plataforma:
+                <br />
+                • Classificação de gênero literário
+                <br />
+                • Análise de redes sociais nos livros
+                <br />
+                • NER - Named Entity Recognition (NER) - Identificação de personagens
+                <br />
+                • Resultados para predição/análise de sucesso
+                <br />
               </p>
               </div>
               <div className="w-full lg:w-3/12 ">
