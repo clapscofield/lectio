@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { readString } from "react-papaparse";
 import goodreadsWorks from "../../../assets/csv/goodreads_works.csv";
-import goodreadsInfos from "../../../assets/csv/goodreads_books_infosnovo.csv";
+//import goodreadsInfos from "../../../assets/csv/goodreads_books_infosnovo.csv";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -356,7 +356,7 @@ export default function DatasetTable() {
     };
   
     readString(goodreadsWorks, papaConfig);
-    readString(goodreadsInfos, papaConfig);
+    //readString(goodreadsInfos, papaConfig);
   }
 
   const handleRequestSort = (event, property) => {
