@@ -16,7 +16,7 @@ The development of the platform took place in sprints, following a Scrum methodo
 **Available online**
 
 <p align="center">
-  <img src = "https://i.imgur.com/YP4mkPl.png" width=350>
+  <img src = "https://i.imgur.com/YP4mkPl.png">
 </p>
 
 ## Technologies
