@@ -2,6 +2,7 @@
 
 ## Table of contents
 - [Introduction](#introduction)
+- [Technologies](#technologies)
 - [Features](#features)
 - [Contributors](#contributors)
 - [Build Process](#build-process)
@@ -15,5 +16,15 @@ The development of the platform took place in sprints, following a Scrum methodo
 **Available online**
 
 <p align="center">
-  <img src = "https://imgur.com/a/CI3ZTZE" width=350>
+  <img src = "https://i.imgur.com/YP4mkPl.png" width=350>
 </p>
+
+## Technologies
+
+## Features
+
+## Contributors
+
+## Build Process
+
+## Acknowledgments
