@@ -12,6 +12,7 @@ import "assets/styles/tailwind.css";
 // views without layouts
 import Dataset from "features/dataset";
 import Pln from "features/pln";
+import SuccessBooks from "features/successBooks";
 
 //import Landing from "features/landing";
 //import Profile from "views/Profile.js";
@@ -22,6 +23,7 @@ ReactDOM.render(
     <Switch>
       <Route path="/dataset" component={Dataset} />
       <Route path="/pln" component={Pln} />
+      <Route path="/successBooks" component={SuccessBooks} />
       {/* <Route path="/auth" component={Auth} /> */}
       {/* add routes without layouts */}
       {/* <Route path="/landing" exact component={Landing} />
